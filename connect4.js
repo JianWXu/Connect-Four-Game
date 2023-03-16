@@ -114,19 +114,20 @@ function handleClick(evt) {
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
-  // if (
-  //   board.map(function (row) {
-  //     return row.every(function (el) {
-  //       if (el === 1 || el === 2) {
-  //         endGame("You both suck.");
-  //       }
-  //     });
-  //   })
-  // )
+  const allRowsFull = board.every(function (row) {
+    //but map works sort of
+    return row.every(function (el) {
+      return el === 1 || el === 2;
+    });
+  });
 
-  if (board.every((row) => row.every(Boolean))) {
-    return endGame("It's a tie");
+  if (allRowsFull) {
+    endGame("It's a tie");
   }
+
+  // if (board.every((row) => row.every(Boolean))) {
+  //   return endGame("It's a tie");
+  // }
 
   currPlayer = currPlayer == 1 ? 2 : 1;
 }
